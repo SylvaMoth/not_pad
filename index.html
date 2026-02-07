@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>not_pad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark">
+  <div class="container">
+    <div class="toolbar">
+      <button id="btn-open" class="btn">Open</button>
+      <button id="btn-history" class="btn">▼</button>
+      <div id="history-menu" class="history-menu hidden"></div>
+      <button id="btn-save" class="btn">Save</button>
+      <button id="btn-close" class="btn">Close</button>
+      <button id="btn-preview" class="btn">Preview</button>
+      <button id="btn-print" class="btn hidden">Print</button>
+      <span id="filename" class="filename">Ready to write</span>
+    </div>
+
+    <textarea id="editor" spellcheck="false" placeholder="Start typing..."></textarea>
+    <div id="preview" class="preview hidden"></div>
+    
+    <div id="search-bar" class="search-bar hidden">
+      <input type="text" id="search-input" placeholder="Find...">
+      <button id="btn-search-prev" class="btn btn-small">↑</button>
+      <button id="btn-search-next" class="btn btn-small">↓</button>
+      <span id="search-count" class="search-count"></span>
+      <button id="btn-toggle-replace" class="btn btn-small">Replace</button>
+      <button id="btn-close-search" class="btn btn-small">✕</button>
+      
+      <div id="replace-bar" class="replace-bar hidden">
+        <input type="text" id="replace-input" placeholder="Replace with...">
+        <button id="btn-replace" class="btn btn-small">Replace</button>
+        <button id="btn-replace-all" class="btn btn-small">Replace All</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="save-dialog" class="dialog-overlay hidden">
+    <div class="dialog save-dialog">
+      <h3>Save</h3>
+      
+      <div class="dialog-option">
+        <label>
+          <input type="radio" name="save-action" value="new" id="save-new" checked>
+          Save as new file
+        </label>
+      </div>
+      
+      <div class="dialog-option">
+        <label>
+          <input type="radio" name="save-action" value="prepend" id="save-prepend">
+          Prepend to existing file
+        </label>
+      </div>
+      
+      <div class="dialog-option">
+        <label>
+          <input type="radio" name="save-action" value="append" id="save-append">
+          Append to existing file
+        </label>
+      </div>
+      
+      <div class="dialog-separator"></div>
+      
+      <div class="dialog-option">
+        <label>
+          <input type="checkbox" id="save-add-date">
+          Add date line
+        </label>
+      </div>
+      
+      <div class="dialog-option">
+        <label>Additional text for this save:</label>
+        <input type="text" id="save-date-text" placeholder="e.g., Report 1, Version 2" maxlength="60">
+      </div>
+      
+      <div class="dialog-buttons">
+        <button id="btn-save-confirm" class="btn btn-dialog">Save</button>
+        <button id="btn-save-cancel" class="btn btn-dialog">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="message-dialog" class="dialog-overlay hidden">
+    <div class="dialog">
+      <h3 id="message-title"></h3>
+      <p id="message-text"></p>
+      <div class="dialog-buttons">
+        <button id="btn-message-ok" class="btn btn-dialog">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirm-dialog" class="dialog-overlay hidden">
+    <div class="dialog">
+      <h3 id="confirm-title"></h3>
+      <p id="confirm-text"></p>
+      <div class="dialog-buttons">
+        <button id="btn-confirm-yes" class="btn btn-dialog">Yes</button>
+        <button id="btn-confirm-no" class="btn btn-dialog">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="preferences-dialog" class="dialog-overlay hidden">
+    <div class="dialog preferences-dialog">
+      <h3>Preferences</h3>
+      
+      <div class="pref-section">
+        <label>Theme</label>
+        <div class="pref-row">
+          <label><input type="radio" name="theme" value="dark" id="pref-theme-dark"> Dark</label>
+          <label><input type="radio" name="theme" value="light" id="pref-theme-light"> Light</label>
+        </div>
+      </div>
+      
+      <div class="pref-section">
+        <label>Default Open Directory</label>
+        <div class="pref-row">
+          <input type="text" id="pref-open-dir" readonly placeholder="Not set (will use Documents)">
+          <button id="btn-browse-open" class="btn btn-small">Browse...</button>
+          <button id="btn-clear-open" class="btn btn-small">Clear</button>
+        </div>
+      </div>
+      
+      <div class="pref-section">
+        <label>Default Save Directory</label>
+        <div class="pref-row">
+          <input type="text" id="pref-save-dir" readonly placeholder="Not set (will use Documents)">
+          <button id="btn-browse-save" class="btn btn-small">Browse...</button>
+          <button id="btn-clear-save" class="btn btn-small">Clear</button>
+        </div>
+      </div>
+      
+      <div class="pref-section">
+        <label>Date Line Format</label>
+        <div class="pref-row">
+          <label><input type="radio" name="date-format" value="YY-MM-DD" id="pref-date-short"> YY-MM-DD</label>
+          <label><input type="radio" name="date-format" value="YYYY-Month-DD" id="pref-date-long"> YYYY-Month-DD</label>
+        </div>
+      </div>
+      
+      <div class="pref-section">
+        <label>
+          <input type="checkbox" id="pref-include-date">
+          Include date in line
+        </label>
+      </div>
+      
+      <div class="pref-section">
+        <label>Default Date Line Text (optional)</label>
+        <div class="pref-row">
+          <input type="text" id="pref-date-text" placeholder="e.g., Report, Meeting Notes" maxlength="60">
+        </div>
+      </div>
+      
+      <div class="dialog-buttons">
+        <button id="btn-pref-save" class="btn btn-dialog">Save</button>
+        <button id="btn-pref-cancel" class="btn btn-dialog">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
