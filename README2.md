@@ -144,4 +144,6 @@ not_pad_app/
 
 ## License
 
-Personal project. Use as you like. 
+This project is source-available. You may view, study, and modify the code for personal or educational use only. Commercial use, resale, or redistribution as a competing product is not permitted without explicit permission from the author. Attribution required. No warranty is provided.
+
+If you are interested in commercial use, collaboration, or licensing, please contact the author.
