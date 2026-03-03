@@ -1,0 +1,32 @@
+# not_pad v0.98.2
+
+A minimal, distraction-free markdown editor for Windows.
+
+**Features:**
+- Write and edit markdown locally
+- Dark and light themes
+- Find and replace (Ctrl+F / Ctrl+H)
+- Markdown preview (Ctrl+M)
+- Print support
+- Save as new file, append, or prepend to existing files
+- Recent file history
+- Preferences (theme, directories, date formats)
+
+**Usage:**
+1. Download `not_pad-0.98.2-portable.zip`
+2. Extract and run `not_pad.exe`
+3. No installation required
+
+**Keyboard Shortcuts:**
+- `Ctrl+N` — New file
+- `Ctrl+O` — Open file
+- `Ctrl+S` — Save / overwrite
+- `Ctrl+Shift+S` — Save as
+- `Ctrl+F` — Find
+- `Ctrl+H` — Replace
+- `Ctrl+M` — Preview
+
+**License:**
+Source-available. See LICENSE file.
+
+For issues, feature requests, or the source code, visit the main project.
