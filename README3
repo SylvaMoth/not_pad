@@ -1,6 +1,10 @@
-# not_pad v0.98.2
+# not_pad v0.98.3
 
 A minimal, distraction-free markdown editor for Windows.
+
+- No telemetry
+- No background network calls
+- Works fully offline
 
 **Features:**
 - Write and edit markdown locally
@@ -13,7 +17,7 @@ A minimal, distraction-free markdown editor for Windows.
 - Preferences (theme, directories, date formats)
 
 **Usage:**
-1. Download `not_pad-0.98.2-portable.zip`
+1. Download `not_pad-0.98.3-portable.zip`
 2. Extract and run `not_pad.exe`
 3. No installation required
 
@@ -27,6 +31,6 @@ A minimal, distraction-free markdown editor for Windows.
 - `Ctrl+M` — Preview
 
 **License:**
-Source-available. See LICENSE file.
+See LICENSE file.
 
-For issues, feature requests, or the source code, visit the main project.
+For issues or feature requests, visit the main project.
