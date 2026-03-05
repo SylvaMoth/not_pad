@@ -5,6 +5,8 @@ A minimal, distraction-free markdown editor for Windows.
 - No telemetry
 - No background network calls
 - Works fully offline
+- You can monitor network traffic while running not_pad. It makes zero outbound requests.
+- Only accesses folders set by the user
 
 **Features:**
 - Write and edit markdown locally
